@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Restro</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Google Fonts -->
+    
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e10251a52d.js" crossorigin="anonymous"></script>
+
+    <!-- Template Main CSS File -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header id="header" class="d-flex align-items-center">
+      <div
+        class="container-fluid container-xl d-flex align-items-center justify-content-between"
+      >
+        <h1 class="logo me-auto me-lg-0">
+          <a href="index.html">Welcome To Meal Monkey </a>
+        </h1>
+
+        <a href="#" class="log-out-btn scrollto d-none d-lg-flex">Log Out</a>
+      </div>
+    </header>
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+      <div
+        class="container position-relative text-center text-lg-start"
+        data-aos="zoom-in"
+        data-aos-delay="100"
+      >
+        <div class="row">
+          <div class="col-lg-8">
+            <h1>Welcome to <span>Meal Monkey Express</span></h1>
+            <h2>Delivering great food faster than you expect!</h2>
+
+            <div class="btns">
+              <button
+                type="button"
+                href="#"
+                class="btn-createmenu animated fadeInUp scrollto hidden"
+                data-bs-toggle="modal"
+                data-bs-target="#createOrderBackdrop"
+              >
+              <i class="fa-solid fa-utensils me-1"></i>
+                Create A Restaurent
+              </button>
+              <a href="" class="btn-view-order animated fadeInUp scrollto"
+                >
+                <i class="fa-light fa fa-list me-1"></i>
+                View Order List</a
+              >
+
+              <!-- Modal -->
+              <div
+              class="modal fade"
+              id="createOrderBackdrop"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content modal-createRestro">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5 ms-5 text-coffee" id="staticBackdropLabel">
+                      <i class="fa-solid fa-shop me-2"></i>
+                      Create Restraurant 
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close me-5"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+
+                    <form action="" class=" mx-5 my-2">
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="restroName">
+                          <ion-icon name="storefront-outline" class="me-1"></ion-icon>
+                          <b>Name</b> </label>
+                        <input
+                          type="text"
+                          id="restroName"
+                          class="form-control"
+                          required
+                        />
+                      </div>
+                      <div
+                        class="alert alert-danger alert-dismissible fade show hidden nameAlert"
+                      >
+                        <strong>Error!</strong> Please Enter Restaurant's Name !
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="alert"
+                          data-mdb-delay="3000"
+                        ></button>
+                      </div>
+                      <div
+                      class="alert alert-danger alert-dismissible fade show hidden sameNameAlert"
+                    >
+                      <strong>Error!</strong> Restaurant Name Already Exsits Choose Another One !
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        data-mdb-delay="3000"
+                      ></button>
+                    </div>
+                
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="foodType">
+                          <ion-icon name="filter-outline" class="me-1"></ion-icon>
+                         <b>Choose Food Type</b> </label>
+                         <select class="form-select" id="foodType" aria-label="Default select example" onchange="jsFunction();">
+                          <option selected disabled>Choose Food Type</option>
+                          <option value="Soups">Soups</option>
+                          <option value="Starters">Starters</option>
+                          <option value="Main Course">Main Course</option>
+                          <option value="Deserts">Deserts</option>
+                        </select>
+                      </div>
+                
+                      <div
+                        class="alert alert-danger alert-dismissible fade show hidden foodTypeAlert"
+                      >
+                        <strong>Error!</strong> Please Choose Food Type !
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="alert"
+                        ></button>
+                     </div>
+                     
+                     <!-- Firstly used 4 seprate select component for displaying food items of 4 foodtypes then made changes and created arrays in js file to display all food items of all food type using single select component. -->
+
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="foodItem">
+                          <ion-icon name="pizza-outline"></ion-icon>
+                         <b>Chooose Food Item</b> </label>
+                         <!----------------------- soups --------------------->
+                         <select class="form-select Soups hidden foodItems" id="foodItems" aria-label="Default select example">
+                          <!-- <option selected disabled>Choose Food Item</option> -->
+                          <!-- <option value="Tomato">Tomato</option>
+                          <option value="Hot And Sour">Hot And Sour</option>
+                          <option value="Manchurian Soup">Manchurian Soup</option> -->
+                        </select>
+                        
+                        <!-- --------------- starters   -------------------->
+                        <!-- <select class="form-select Starters hidden foodItems" id="foodItems2" aria-label="Default select example">
+                          
+                          <option value="Paneer Chilly">Paneer Chilly</option>
+                          <option value="Crispy Veggies">Crispy Veggies</option>
+                          <option value="Manchurian">Manchurian</option>
+                        </select> -->
+                         <!-- --------------- main-course   ------------------>
+                         <!-- <select class="form-select mainCourse hidden foodItems" id="foodItems3" aria-label="Default select example"> 
+                      
+                          <option value="Paneer Patiyala">Paneer Patiyala</option>
+                          <option value="Shahi Kabab">Shahi Kabab</option>
+                          <option value="Paneer Changezi">Paneer Changezi</option>
+                        </select> -->
+                        <!-- --------------- deserts   -------------------->
+                        <!-- <select class="form-select deserts hidden foodItems" id="foodItems4" aria-label="Default select example">
+                         
+                          <option value="Mango Icecream">Mango Icecream</option>
+                          <option value="Choco Nuttela Waffle">Choco Nuttela Waffle</option>
+                          <option value="Mix Berry Sundae">Mix Berry Sundae </option>
+                        </select> -->
+                      </div>
+                      <div
+                        class="alert alert-danger alert-dismissible fade show hidden foodItemAlert"
+                      >
+                        <strong>Error!</strong> Please Choose Food Item!
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="alert"
+                        ></button>
+                      </div>
+                     
+                
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="foodPrice">
+                          <ion-icon name="wallet-outline" class="me-1"></ion-icon>
+                         <b>Price</b></label>
+                        <input type="number" id="foodPrice" class="form-control" required />
+                      </div>
+                      <div
+                        class="alert alert-danger alert-dismissible fade show hidden priceAlert"
+                      >
+                        <strong>Error!</strong> Please Enter Price!
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="alert"
+                        ></button>
+                    </div>
+                    <div
+                    class="alert alert-danger alert-dismissible fade show hidden priceAlert2"
+                  >
+                    <strong>Error!</strong> Please Enter Valid Price!
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="alert"
+                    ></button>
+                </div>
+                    </form>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-dark"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button type="button" class="btn btn-primary register-btn">
+                      Register
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Hero -->
+
+    <main id="main">
+      <!-- ======= Why Us Section ======= -->
+      <section id="why-us" class="orders-box">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Todays</h2>
+            <p>Delicacies</p>
+          </div>
+
+          <div class="row filter-row hidden" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-12 d-flex justify-content-center">
+              <ul id="menu-flters">
+
+                <li data-filter=".filter-starters">
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="priceRange">
+                     <b>Price Range</b> </label>
+                     <select class="form-select" id="priceRange" aria-label="Default select example" onchange="Filter(this.value);">
+                      <option value="Low To High">Low To High</option>
+                      <option value="High To Low">High To Low</option>
+                    </select>
+                  </div>
+                </li>
+
+                <li data-filter="*" class="filter-active">
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="foodType">
+                     <b>Restaurants</b> </label>
+                     <select class="form-select" id="filter-restros" aria-label="Default select example" onchange="Filter(this.value);">
+                      <option value="All" selected>All</option>
+                    </select>
+                  </div>
+                </li>
+                
+                <li data-filter="*" class="filter-active">
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="foodType">
+                     <b>Food Type</b> </label>
+                     <select class="form-select" id="foodType1" aria-label="Default select example" onchange="Filter(this.value);">
+                      <!-- <option selected disabled>Choose Food Type Which Suits You Most</option> -->
+                      <option value="All">All</option>
+                      <option value="Soups">Soups</option>
+                      <option value="Starters">Starters</option>
+                      <option value="Main Course">Main Course</option>
+                      <option value="Deserts">Deserts</option>
+                    </select>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row r-box">
+<!-- 
+            <div class="col-lg-3">
+              <div class="box" data-aos="zoom-in" data-aos-delay="100">
+                <span>${restro.name}</span>
+                <h4>${restro.foodItem}</h4>
+                <p>
+                ${restro.foodType}
+                </p>
+                <p>${restro.price}</p>
+                <button class="buy-btn mt-3">Buy</button>
+              </div>
+              </div>
+
+            <div class="col-lg-3">
+              <div class="box" data-aos="zoom-in" data-aos-delay="100">
+                <span>01</span>
+                <h4>Lorem Ipsum</h4>
+                <p>
+                  Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et
+                  consectetur ducimus vero placeat
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-3 mt-4 mt-lg-0">
+              <div class="box" data-aos="zoom-in" data-aos-delay="200">
+                <span>02</span>
+                <h4>Repellat Nihil</h4>
+                <p>
+                  Dolorem est fugiat occaecati voluptate velit esse. Dicta
+                  veritatis dolor quod et vel dire leno
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-3 mt-4 mt-lg-0">
+              <div class="box" data-aos="zoom-in" data-aos-delay="300">
+                <span>03</span>
+                <h4>Ad ad velit qui</h4>
+                <p>
+                  Molestiae officiis omnis illo asperiores. Aut doloribus vitae
+                  sunt debitis quo vel nam quis
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-3 mt-4 mt-lg-0">
+              <div class="box" data-aos="zoom-in" data-aos-delay="300">
+                <span>03</span>
+                <h4>Ad ad velit qui</h4>
+                <p>
+                  Molestiae officiis omnis illo asperiores. Aut doloribus vitae
+                  sunt debitis quo vel nam quis
+                </p>
+              </div>
+            </div> -->
+            
+            
+<!---------------------------------Delete Modal------------------------------->
+
+          </div>
+        </div>
+      </section>
+      <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content  deleteModal">
+            <div class="modal-header">
+              <h1 class="modal-title fs-4 my-2" id="staticBackdropLabel">
+                <i class="fa-solid fa-trash me-2"></i>
+                <b>Delete Order</b> 
+              </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body my-3">
+              Are You Sure You Want To Delete This Order Item ?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger btn-delete-modal">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-----------------Buy conformation Modal------------------------------->
+      <div class="modal fade" id="buyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content  deleteModal">
+            <div class="modal-header">
+              <h1 class="modal-title fs-4 my-2" id="staticBackdropLabel">
+                <i class="fa-regular fa-cart-shopping-fast"></i>
+                <b>Buy Item</b> 
+              </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body my-3 ">
+              <b>Are You Sure You Want To Order This Item ?</b> 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary btn-buy-modal">Buy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <section id="h2" class="recent-orders-box hidden">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title adminTitle">
+            <h2>Your</h2>
+            <p>Previous Orders</p>
+          </div>
+
+          <div class="row" id="previousOrderSection">
+          </div>
+          </section>
+    
+    </main>
+
+    <!-- Vendor JS Files -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="index.js"></script>
+    
+  </body>
+</html>
